@@ -3,14 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { MessageBoardHttpClient } from './services/sources/utils/MessageBoardHttpClient';
 
 @NgModule({
   declarations: [
-    AppComponent,
     LandingComponent,
     ProfileComponent
   ],
@@ -20,6 +17,6 @@ import { MessageBoardHttpClient } from './services/sources/utils/MessageBoardHtt
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [LandingComponent]
 })
 export class AppModule { }
