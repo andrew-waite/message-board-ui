@@ -5,9 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AppComponent } from './app.component';
+import { MessageBoardHttpClient } from './services/sources/utils/MessageBoardHttpClient';
 
 @NgModule({
   declarations: [
+    AppComponent,
     LandingComponent,
     ProfileComponent
   ],
@@ -17,6 +20,6 @@ import { ProfileComponent } from './components/profile/profile.component';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [LandingComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

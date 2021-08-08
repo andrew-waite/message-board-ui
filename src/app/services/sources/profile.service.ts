@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/User';
 import { MessageBoardHttpClient } from './utils/MessageBoardHttpClient';
 
 @Injectable({
@@ -8,13 +10,7 @@ export class ProfileService {
 
   constructor(private http: MessageBoardHttpClient) { }
 
-  getUser(id: number): string {
-    var firstName = "";
-  
-    this.http.get("profile/5").subscribe(data => {
-      firstName = data.firstName;
-    })
-
-    return firstName;
+  getUser(id: number): Observable<User> {
+    return this.http.get("/profile/" + id);
   }
 }

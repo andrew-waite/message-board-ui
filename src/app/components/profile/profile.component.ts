@@ -9,18 +9,17 @@ import { ProfileService } from 'src/app/services/sources/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-   firstName: string;
-   lastName: string;
+   private firstName: string = '';
+   private lastName: string = '';
 
   constructor(private route: ActivatedRoute, private profileService: ProfileService) { 
-    this.firstName = '';
-    this.lastName = '';
   }
 
   ngOnInit(): void {
     var id = this.route.snapshot.params['id'];
-    console.log(id);
-
-    this.firstName = this.profileService.getUser(10);
+    this.profileService.getUser(id).subscribe(data => {
+      this.firstName = data.firstName;
+      this.lastName = data.lastName;
+    });
   }
 }

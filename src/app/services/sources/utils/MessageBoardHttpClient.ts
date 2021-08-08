@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class MessageBoardHttpClient extends HttpClient { 
-    BASE_URL = "http://localhost:7000/api/";
+    BASE_URL = "http://localhost:7000/api";
     
     constructor(handler: HttpHandler) {
         super(handler);
