@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
 
    private firstName: string = '';
    private lastName: string = '';
+   private phoneNumber: number = 0;
 
   constructor(private route: ActivatedRoute, private profileService: ProfileService) { 
   }
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.getUser(id).subscribe(data => {
       this.firstName = data.firstName;
       this.lastName = data.lastName;
+      this.phoneNumber = data.phoneNumber;
     });
   }
 }
