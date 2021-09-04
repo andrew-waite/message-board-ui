@@ -9,9 +9,9 @@ import { ProfileService } from 'src/app/services/sources/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-   private firstName: string = '';
-   private lastName: string = '';
-   private phoneNumber: number = 0;
+    firstName: string = '';
+    lastName: string = '';
+    phoneNumber: number = 0;
 
   constructor(private route: ActivatedRoute, private profileService: ProfileService) { 
   }
