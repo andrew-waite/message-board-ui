@@ -8,6 +8,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AppComponent } from './app.component';
 import { MessageBoardHttpClient } from './services/sources/utils/MessageBoardHttpClient';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { LoginScreenComponent } from './components/login-screen/login-screen.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     AppComponent,
     LandingComponent,
     ProfileComponent,
-    NavigationComponent
+    NavigationComponent,
+    LoginScreenComponent
   ],
   imports: [
     BrowserModule,
