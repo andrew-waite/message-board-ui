@@ -1,18 +1,33 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHandler } from "@angular/common/http"
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MessageBoardHttpClient extends HttpClient { 
-    BASE_URL = "http://localhost:7000/api";
+export class MessageBoardHttpClient { 
+    BASE_URL = "http://localhost:4200/api";
+    private httpClient: HttpClient;
     
-    constructor(handler: HttpHandler) {
-        super(handler);
+    constructor(httpClient: HttpClient) {
+        this.httpClient = httpClient;
     }
 
     get(url: string): Observable<any> {
-        return super.get(this.BASE_URL + url);
+        return this.httpClient.get(this.buildUrl(url));
+    }
+
+    post<T>(url: string, body?: any): Promise<T> {
+        var response = this.httpClient.post<T>(this.buildUrl(url), body).toPromise();
+
+        response.catch(error => {
+            throwError(error);
+        });
+
+        return response;
+    }
+
+    private buildUrl(requestedPath: String) {
+        return this.BASE_URL + requestedPath;
     }
 }

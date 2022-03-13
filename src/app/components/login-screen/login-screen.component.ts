@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
@@ -9,7 +10,7 @@ import { LoginService } from 'src/app/services/sources/login.service';
   styleUrls: ['./login-screen.component.css']
 })
 export class LoginScreenComponent implements OnInit {
-  loginFailed: boolean = false;
+  public loginFailed: boolean = false;
 
   constructor(private router: Router, private loginService: LoginService) {
   }
@@ -17,20 +18,15 @@ export class LoginScreenComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  public login(username: String): boolean {
-    var user: User | undefined;
-    this.loginService.submitLoginDetails(username).subscribe(e => {
-      user = e;
-    });
-
-    if (user !== undefined) {
-      this.router.navigate(['/profile/' + user.id]);
-    } else {
-      this.loginFailed = true;
-    }
-
-    return false;
+  public login(email: String): void {
+    this.loginService.submitLoginDetails(email)
+      .then(user => this.loginSuccess(user))
+      .catch((error: HttpErrorResponse) => {
+        this.loginFailed = true;
+      });
   }
 
+  private loginSuccess(user: User): void {
+    this.router.navigate(['/profile', user.id]);
+  }
 }
