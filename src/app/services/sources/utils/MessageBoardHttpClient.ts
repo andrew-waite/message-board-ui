@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHandler } from "@angular/common/http"
+import { HttpClient, HttpErrorResponse, HttpHandler } from "@angular/common/http"
 import { Observable, throwError } from 'rxjs';
 
 @Injectable({
@@ -20,14 +20,14 @@ export class MessageBoardHttpClient {
     post<T>(url: string, body?: any): Promise<T> {
         var response = this.httpClient.post<T>(this.buildUrl(url), body).toPromise();
 
-        response.catch(error => {
+        response.catch((error: HttpErrorResponse) => {
             throwError(error);
         });
 
         return response;
     }
 
-    private buildUrl(requestedPath: String) {
+    private buildUrl(requestedPath: string) : string{
         return this.BASE_URL + requestedPath;
     }
 }

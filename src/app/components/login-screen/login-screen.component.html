@@ -5,10 +5,10 @@
 </svg>
 <div class="p-5 mb-4 bg-light rounded-3 fill-screen vertical-center">
     <div class="container-fluid w-50">
-        <div class="alert alert-danger d-flex" role="alert" *ngIf="loginFailed">
+        <div id ="loginAlert" class="alert alert-danger d-flex" role="alert" *ngIf="loginFailed">
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
             <div>
-                The username or password entered was incorrect
+                {{loginErrorMessage}}
             </div>
             <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>

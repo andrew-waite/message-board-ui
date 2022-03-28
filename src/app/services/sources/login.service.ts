@@ -12,7 +12,7 @@ import { User } from 'src/app/models/User';
 export class LoginService {
   constructor(private http: MessageBoardHttpClient) { }
 
-  submitLoginDetails(email: String): Promise<User> {
+  submitLoginDetails(email: string): Promise<User> {
     let body = {email: email};
     return this.http.post<User>("/profile/login", body);
   }
