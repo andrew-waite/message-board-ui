@@ -1,6 +1,8 @@
 .vertical-center {
-    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 100vh; /* These two lines are counted as one :-)       */
+    /* Fallback for browsers do NOT support vh unit */
+    /* These two lines are counted as one :-)       */
+    min-height: calc(100% - 56px);
+    min-height: calc(100vh - 56px);
 
     display: flex;
     align-items: center;
