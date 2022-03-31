@@ -18,11 +18,10 @@ export class LoginScreenComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var alert = $("#loginAlert");    
-    alert.on("close.bs.alert", function () {
-      alert.hide(); //hide the alert
-      return false; //don't remove it from DOM
-    });
+  }
+
+  public dismissAlert(): void { 
+    this.loginFailed = !this.loginFailed;
   }
 
   public login(email: string): void {
@@ -35,6 +34,11 @@ export class LoginScreenComponent implements OnInit {
   }
 
   private loginSuccess(user: User): void {
+    this.addUserToSessionStorage(user);
     this.router.navigate(['/profile', user.id]);
+  }
+
+  private addUserToSessionStorage(user: User): void {
+    sessionStorage.setItem("loggedInUserId", user.id.toString());
   }
 }
