@@ -34,11 +34,11 @@ export class LoginScreenComponent implements OnInit {
   }
 
   private loginSuccess(user: User): void {
-    this.addUserToSessionStorage(user);
+    this.addUserToLocalStorage(user);
     this.router.navigate(['/profile', user.id]);
   }
 
-  private addUserToSessionStorage(user: User): void {
-    sessionStorage.setItem("loggedInUserId", user.id.toString());
+  private addUserToLocalStorage(user: User): void {
+    localStorage.setItem("loggedInUserId", user.id.toString());
   }
 }

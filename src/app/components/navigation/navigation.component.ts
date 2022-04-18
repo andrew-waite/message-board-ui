@@ -14,7 +14,7 @@ export class NavigationComponent implements OnInit {
   }
 
   public routeToLoggedInProfile(): void {
-    var loggedInUserId = sessionStorage.getItem("loggedInUserId");
+    var loggedInUserId = localStorage.getItem("loggedInUserId");
     this.router.navigate(['/profile', loggedInUserId]);
   }
 }
